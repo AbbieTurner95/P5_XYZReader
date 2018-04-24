@@ -98,32 +98,28 @@
     </com.example.xyzreader.ui.DrawInsetsFrameLayout>
 
 
-    </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_detail"
             android:fitsSystemWindows="true"
             android:minHeight="?attr/actionBarSize"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:background="?attr/colorPrimary"
+            android:background="@color/secondary_dark"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />
+
+
+    </android.support.design.widget.CollapsingToolbarLayout>
+
+
+</android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-    <com.example.xyzreader.ui.ObservableScrollView
-        android:id="@+id/scrollview"
-        android:nestedScrollingEnabled="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/scrollview"
+        android:nestedScrollingEnabled="true">
 
         <TextView
             android:id="@+id/article_body"
@@ -138,8 +134,6 @@
             android:textSize="@dimen/detail_body_text_size"
             android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
             android:fontFamily="@font/highlandgothicflf"/>
-
-    </com.example.xyzreader.ui.ObservableScrollView>
 
     </android.support.v4.widget.NestedScrollView>
 
