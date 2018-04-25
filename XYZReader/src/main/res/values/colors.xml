@@ -17,13 +17,14 @@
 
 <resources>
     <color name="photo_placeholder">#ccc</color>
-    <color name="primary">#ff6e40</color>
-    <color name="primary_light">#ffa06d</color>
-    <color name="primary_dark">#c53d13</color>
 
-    <color name="secondary">#ef5350</color>
-    <color name="secondary_light">#ff867c</color>
-    <color name="secondary_dark">#b61827</color>
+    <color name="primary">#e57373</color>
+    <color name="primary_light">#ffa4a2</color>
+    <color name="primary_dark">#af4448</color>
+
+    <color name="secondary">#689f38</color>
+    <color name="secondary_light">#99d066</color>
+    <color name="secondary_dark">#387002</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

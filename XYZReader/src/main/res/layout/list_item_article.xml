@@ -35,7 +35,7 @@
             android:textStyle="bold"
             android:padding="10dp"
             android:paddingBottom="4dp"
-            android:textColor="@color/secondary"
+            android:textColor="@color/primary_dark"
             android:ellipsize="end"
             android:maxLines="4"
             android:fontFamily="@font/highlandgothicflf"/>
