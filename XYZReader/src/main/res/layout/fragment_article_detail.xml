@@ -54,38 +54,6 @@
         android:id="@+id/scrollview"
         android:background="@color/primary_light">
 
-        <LinearLayout
-            android:id="@+id/meta_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
-            android:background="#333"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/detail_metabar_vert_padding"
-            android:paddingLeft="@dimen/detail_inner_horiz_margin"
-            android:paddingRight="@dimen/detail_inner_horiz_margin"
-            android:paddingTop="@dimen/detail_metabar_vert_padding">
-
-            <TextView
-                android:id="@+id/article_title"
-                style="?android:attr/textAppearanceLarge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/highlandgothicflf"
-                android:lineSpacingMultiplier="0.9"
-                android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
-                android:textColor="@color/white"
-                android:textSize="@dimen/detail_title_text_size"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/article_byline"
-                style="?android:attr/textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/highlandgothiclightflf"
-                android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/article_body"
@@ -101,8 +69,6 @@
             android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
             android:fontFamily="@font/highlandgothicflf"/>
 
-
-        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
 
