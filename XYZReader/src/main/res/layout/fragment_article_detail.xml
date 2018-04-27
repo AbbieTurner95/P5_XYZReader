@@ -41,7 +41,7 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:background="@color/primary_dark"
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="100dp" />
 
 
     </android.support.design.widget.CollapsingToolbarLayout>
@@ -51,7 +51,7 @@
     <android.support.v4.widget.NestedScrollView
         app:layout_anchorGravity="bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/scrollview"
         android:background="@color/primary">
@@ -80,7 +80,7 @@
         app:fabSize="normal"
         android:backgroundTint="@color/secondary"
         android:background="@color/secondary"
-        android:stateListAnimator="@anim/fab_state_list_anim"
+        android:stateListAnimator="@animator/fab_state_list_anim"
         android:layout_gravity="bottom|end"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"

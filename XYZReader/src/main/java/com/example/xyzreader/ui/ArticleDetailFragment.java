@@ -169,6 +169,17 @@ public class ArticleDetailFragment extends Fragment implements
         }
     }
 
+    private Date parsePublishedDate() {
+        try {
+            String date = mCursor.getString(ArticleLoader.Query.PUBLISHED_DATE);
+            return dateFormat.parse(date);
+        } catch (ParseException ex) {
+            Log.e(TAG, ex.getMessage());
+            Log.i(TAG, "passing today's date");
+            return new Date();
+        }
+    }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void bindViews() {
         if (mRootView == null) {
