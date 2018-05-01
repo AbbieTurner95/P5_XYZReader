@@ -195,8 +195,6 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
 
-           // ((CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout)).setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
-
             Toolbar mToolbar = mRootView.findViewById(R.id.toolbar_detail);
             mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
             mToolbar.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
@@ -229,7 +227,7 @@ public class ArticleDetailFragment extends Fragment implements
                     });
         } else {
             mRootView.setVisibility(View.GONE);
-            bodyView.setText("N/A");
+            bodyView.setText("Error with loading the text, please try again!");
         }
     }
 
