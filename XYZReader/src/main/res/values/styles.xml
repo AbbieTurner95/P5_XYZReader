@@ -23,6 +23,8 @@
 
     <style name="Theme.Bacon.Detail">
         <item name="android:background">@android:color/transparent</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/secondary</item>
     </style>
-
 </resources>

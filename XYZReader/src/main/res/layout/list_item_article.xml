@@ -37,8 +37,7 @@
             android:paddingBottom="4dp"
             android:textColor="@color/primary_dark"
             android:ellipsize="end"
-            android:maxLines="4"
-            android:fontFamily="@font/highlandgothicflf"/>
+            android:maxLines="4" />
 
         <TextView
             android:fontFamily="@font/highlandgothiclightflf"

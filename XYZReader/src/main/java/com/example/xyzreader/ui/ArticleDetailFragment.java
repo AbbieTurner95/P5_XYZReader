@@ -8,8 +8,6 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 
 import java.text.ParseException;
@@ -19,7 +17,6 @@ import java.util.GregorianCalendar;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.graphics.Palette;
@@ -49,16 +46,19 @@ public class ArticleDetailFragment extends Fragment implements
     public static final String ARG_ITEM_ID = "item_id";
     private static final float PARALLAX_FACTOR = 1.25f;
 
+    String bodyText;
+
     private Cursor mCursor;
     private long mItemId;
     private View mRootView;
     private int mMutedColor = 0xFF333333;
     private NestedScrollView mScrollView;
-    private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
 
+    int textoffset;
+    TextView bodyView;
+
     private int mTopInset;
-    private View mPhotoContainerView;
     private ImageView mPhotoView;
     private int mScrollY;
     private boolean mIsCard = false;
@@ -118,8 +118,6 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
-
-       // ((CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout)).setTitle("Title");
 
         mScrollView =  mRootView.findViewById(R.id.scrollview);
         mPhotoView = mRootView.findViewById(R.id.photo);
@@ -186,26 +184,28 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-        TextView bodyView = mRootView.findViewById(R.id.article_body);
-
-        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
+        bodyView = mRootView.findViewById(R.id.article_body);
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
 
-            Toolbar mToolbar = mRootView.findViewById(R.id.toolbar_detail);
-            mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
-            mToolbar.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
-            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            textoffset = 0;
+
+            bodyText = mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />");
+            String bodyText2 = bodyText.substring(0, (bodyText.length() <= 400 ? bodyText.length() : 400));
+            bodyView.setText(Html.fromHtml(bodyText2));
+
+            TextView seeMore =  mRootView.findViewById(R.id.more_tv);
+            seeMore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getActivity().onBackPressed();
+                    textoffset += 400;
+                    String bodyText3 = bodyText.substring(textoffset, ((bodyText.length() - textoffset) <= 400 ? (bodyText.length() - textoffset) : 400));
+                    bodyView.setText(Html.fromHtml(bodyText3));
                 }
             });
-
-            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
 
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
@@ -213,8 +213,8 @@ public class ArticleDetailFragment extends Fragment implements
                         public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
                             Bitmap bitmap = imageContainer.getBitmap();
                             if (bitmap != null) {
-                                Palette p = Palette.generate(bitmap, 12);
-                                mMutedColor = p.getDarkMutedColor(0xFF333333);
+                                //Palette p = Palette.generate(bitmap, 12);
+                                //mMutedColor = p.getDarkMutedColor(0xFF333333);
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
                                 updateStatusBar();
                             }
@@ -222,7 +222,6 @@ public class ArticleDetailFragment extends Fragment implements
 
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
-
                         }
                     });
         } else {
