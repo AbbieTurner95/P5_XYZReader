@@ -19,7 +19,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
@@ -47,18 +46,16 @@ public class ArticleDetailFragment extends Fragment implements
     public static final String ARG_ITEM_ID = "item_id";
     private static final float PARALLAX_FACTOR = 1.25f;
 
-    String bodyText;
-    Button seeMore;
-
+    private String bodyText;
+    private Button seeMore;
     private Cursor mCursor;
     private long mItemId;
     private View mRootView;
     private int mMutedColor = 0xFF333333;
     private NestedScrollView mScrollView;
     private ColorDrawable mStatusBarColorDrawable;
-
-    int textoffset;
-    TextView bodyView;
+    private int textoffset;
+    private TextView bodyView;
 
     private int mTopInset;
     private ImageView mPhotoView;
@@ -193,22 +190,32 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
 
-            textoffset = 0;
+            Toolbar mToolbar = mRootView.findViewById(R.id.toolbar_detail);
+            mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+            mToolbar.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().onBackPressed();
+                }
+            });
 
+
+            textoffset = 0;
             bodyText = mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />");
-            String bodyText2 = bodyText.substring(0, (bodyText.length() <= 600 ? bodyText.length() : 600));
+            String bodyText2 = bodyText.substring(0, (bodyText.length() <= 600 ? bodyText.length() : 1000));
             bodyView.setText(Html.fromHtml(bodyText2));
 
             seeMore =  mRootView.findViewById(R.id.more_tv);
             seeMore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    textoffset += 600;
+                    textoffset += 1000;
                     if (bodyText.length() > textoffset) {
-                        String bodyText3 = bodyText.substring(0, ((bodyText.length() - textoffset) <= 400 ? bodyText.length() : textoffset + 400));
+                        String bodyText3 = bodyText.substring(0, ((bodyText.length() - textoffset) <= 1000 ? bodyText.length() : textoffset + 1000));
                         bodyView.setText(Html.fromHtml(bodyText3));
                     } else {
-                        seeMore.isv
+                        seeMore.setVisibility(View.GONE);
                     }
                 }
             });
@@ -231,7 +238,7 @@ public class ArticleDetailFragment extends Fragment implements
                     });
         } else {
             mRootView.setVisibility(View.GONE);
-            bodyView.setText("Error with loading the text, please try again!");
+            bodyView.setText(R.string.error_loading_text);
         }
     }
 
