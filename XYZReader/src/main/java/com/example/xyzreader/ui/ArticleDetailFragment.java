@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,6 +48,7 @@ public class ArticleDetailFragment extends Fragment implements
     private static final float PARALLAX_FACTOR = 1.25f;
 
     String bodyText;
+    Button seeMore;
 
     private Cursor mCursor;
     private long mItemId;
@@ -194,18 +196,23 @@ public class ArticleDetailFragment extends Fragment implements
             textoffset = 0;
 
             bodyText = mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />");
-            String bodyText2 = bodyText.substring(0, (bodyText.length() <= 400 ? bodyText.length() : 400));
+            String bodyText2 = bodyText.substring(0, (bodyText.length() <= 600 ? bodyText.length() : 600));
             bodyView.setText(Html.fromHtml(bodyText2));
 
-            TextView seeMore =  mRootView.findViewById(R.id.more_tv);
+            seeMore =  mRootView.findViewById(R.id.more_tv);
             seeMore.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    textoffset += 400;
-                    String bodyText3 = bodyText.substring(textoffset, ((bodyText.length() - textoffset) <= 400 ? (bodyText.length() - textoffset) : 400));
-                    bodyView.setText(Html.fromHtml(bodyText3));
+                    textoffset += 600;
+                    if (bodyText.length() > textoffset) {
+                        String bodyText3 = bodyText.substring(0, ((bodyText.length() - textoffset) <= 400 ? bodyText.length() : textoffset + 400));
+                        bodyView.setText(Html.fromHtml(bodyText3));
+                    } else {
+                        seeMore.isv
+                    }
                 }
             });
+
 
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
@@ -213,8 +220,6 @@ public class ArticleDetailFragment extends Fragment implements
                         public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
                             Bitmap bitmap = imageContainer.getBitmap();
                             if (bitmap != null) {
-                                //Palette p = Palette.generate(bitmap, 12);
-                                //mMutedColor = p.getDarkMutedColor(0xFF333333);
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
                                 updateStatusBar();
                             }

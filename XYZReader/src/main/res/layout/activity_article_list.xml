@@ -9,7 +9,7 @@
         android:id="@+id/main.appbar"
         android:elevation="4dp"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="100dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
 
