@@ -15,14 +15,13 @@ This project gives you an opportunity to improve an app’s design, a vital skil
 
 
 
+![screen shot 2018-05-02 at 15 41 38](https://user-images.githubusercontent.com/33655422/39529935-be09ae00-4e1f-11e8-974c-42d666cdcaa7.png)
+![screen shot 2018-05-02 at 15 42 06](https://user-images.githubusercontent.com/33655422/39529938-bf2aaeec-4e1f-11e8-84d6-6044b4084376.png)
+![screen shot 2018-05-02 at 15 42 31](https://user-images.githubusercontent.com/33655422/39529939-bf5bb942-4e1f-11e8-893d-e52396d22728.png)
+![screen shot 2018-05-02 at 15 42 56](https://user-images.githubusercontent.com/33655422/39529940-bf83718a-4e1f-11e8-9593-7213410fef30.png)
+![screen shot 2018-05-02 at 15 43 57](https://user-images.githubusercontent.com/33655422/39529941-bfa0b15a-4e1f-11e8-92b0-3ad7d4f1bc9c.png)
+![screen shot 2018-05-02 at 15 44 22](https://user-images.githubusercontent.com/33655422/39529942-bfdb256a-4e1f-11e8-90fb-213a0a2af52c.png)
 
-![screen shot 2018-05-01 at 10 52 20](https://user-images.githubusercontent.com/33655422/39469293-688aa2e0-4d2f-11e8-94ac-337894cb32dd.png)
-
-![screen shot 2018-05-01 at 10 52 45](https://user-images.githubusercontent.com/33655422/39469294-68b10732-4d2f-11e8-9262-6712aae993b7.png)
-
-![screen shot 2018-05-01 at 11 02 03](https://user-images.githubusercontent.com/33655422/39469296-68d36de0-4d2f-11e8-8333-b1757bcb54ef.png)
-
-![screen shot 2018-05-01 at 11 03 06](https://user-images.githubusercontent.com/33655422/39469297-68e8da22-4d2f-11e8-9f0e-4e4dc0f83c90.png)
 
 
 
